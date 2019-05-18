@@ -114,7 +114,7 @@ static int sk_diag_show_rqlen(struct sock *sk, struct sk_buff *nlskb)
 
 static int sk_diag_dump_uid(struct sock *sk, struct sk_buff *nlskb)
 {
-	uid_t uid = from_kuid_munged(sk_user_ns(sk), sock_i_uid(sk));
+	uid_t uid = from_kuid_munged(sk_user_ns(nlskb->sk), sock_i_uid(sk));
 	return nla_put(nlskb, UNIX_DIAG_UID, sizeof(uid_t), &uid);
 }
 
